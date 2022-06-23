@@ -20,8 +20,8 @@ from .diff_data_augmentation import RandomTransform
 from ..consts import PIN_MEMORY, BENCHMARK, DISTRIBUTED_BACKEND, SHARING_STRATEGY, MAX_THREADING
 from ..utils import set_random_seed
 torch.backends.cudnn.benchmark = BENCHMARK
-torch.multiprocessing.set_sharing_strategy(SHARING_STRATEGY)
-
+# torch.multiprocessing.set_sharing_strategy(SHARING_STRATEGY)
+torch.multiprocessing.set_sharing_strategy('file_system')
 
 class Furnace():
     def __init__(self, args, batch_size, augmentations, setup=dict(device=torch.device('cpu'), dtype=torch.float)):

@@ -8,8 +8,8 @@ from .optimization_strategy import training_strategy
 from ..utils import average_dicts
 from ..consts import BENCHMARK, SHARING_STRATEGY
 torch.backends.cudnn.benchmark = BENCHMARK
-torch.multiprocessing.set_sharing_strategy(SHARING_STRATEGY)
-
+# torch.multiprocessing.set_sharing_strategy(SHARING_STRATEGY)
+torch.multiprocessing.set_sharing_strategy('file_system')
 
 class _ClientBase:
     """Implement model-specific code and behavior.

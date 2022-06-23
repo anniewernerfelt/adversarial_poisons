@@ -65,12 +65,12 @@ baseset = torchvision.datasets.CIFAR10(
     root='~/data', train=True, download=False, transform=transform_train)
 trainset = CIFAR_load(root=args.load_path, baseset=baseset)
 trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=128, shuffle=True, num_workers=2)
+    trainset, batch_size=128, shuffle=True, num_workers=0)
 
 testset = torchvision.datasets.CIFAR10(
     root='~/data', train=False, download=False, transform=transform_test)
 testloader = torch.utils.data.DataLoader(
-    testset, batch_size=100, shuffle=False, num_workers=2)
+    testset, batch_size=100, shuffle=False, num_workers=0)
 
 classes = ('plane', 'car', 'bird', 'cat', 'deer',
            'dog', 'frog', 'horse', 'ship', 'truck')
@@ -89,6 +89,7 @@ for run in range(args.runs):
     # net = MobileNet()
     # net = MobileNetV2()
     # net = DPN92()
+
     # net = ShuffleNetG2()
     # net = SENet18()
     # net = ShuffleNetV2(1)

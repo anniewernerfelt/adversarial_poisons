@@ -4,10 +4,11 @@ import torch
 
 import datetime
 import time
-
+import torch.multiprocessing
 import village
 torch.backends.cudnn.benchmark = village.consts.BENCHMARK
-torch.multiprocessing.set_sharing_strategy(village.consts.SHARING_STRATEGY)
+# torch.multiprocessing.set_sharing_strategy(village.consts.SHARING_STRATEGY)
+torch.multiprocessing.set_sharing_strategy('file_system')
 
 # Parse input arguments
 args = village.options().parse_args()
